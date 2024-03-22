@@ -48,7 +48,7 @@ export class FormFoodComponent implements OnInit {
   activedRoute: ActivatedRoute = inject(ActivatedRoute);
   food?:Food = {
     name:'',
-    descripcion:'',
+    description:'',
     category:'',
     image:'',
     price:0
@@ -64,7 +64,7 @@ export class FormFoodComponent implements OnInit {
         this.form.patchValue({
           name:this.food.name,
           category:this.food.category,
-          description:this.food.descripcion,
+          description:this.food.description,
           image:this.food.image,
           price:this.food.price.toString()
         })
@@ -87,7 +87,7 @@ export class FormFoodComponent implements OnInit {
         let comida: Food = {
           id:this.fooId,
           name: this.name?.value,
-          descripcion: this.description?.value,
+          description: this.description?.value,
           category: this.category?.value,
           image: this.image?.value,
           price: priceNumber,
@@ -112,7 +112,7 @@ export class FormFoodComponent implements OnInit {
         let priceNumber = Number(this.price.value);
         let comida: Food = {
           name: this.name?.value,
-          descripcion: this.description?.value,
+          description: this.description?.value,
           category: this.category?.value,
           image: this.image?.value,
           price: priceNumber,

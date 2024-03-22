@@ -10,7 +10,7 @@ export class FoodService {
     {
       id:1,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250
@@ -18,7 +18,7 @@ export class FoodService {
     {
       id:2,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250
@@ -26,7 +26,7 @@ export class FoodService {
     {
       id:3,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250
@@ -34,7 +34,7 @@ export class FoodService {
     {
       id:4,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250
@@ -42,7 +42,7 @@ export class FoodService {
     {
       id:5,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250
@@ -50,7 +50,7 @@ export class FoodService {
     {
       id:6,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250
@@ -58,7 +58,7 @@ export class FoodService {
     {
       id:7,
       name:'pizza',
-      descripcion:'Peperoni',
+      description:'Peperoni',
       category:'food',
       image:'https://2trendies.com/hero/2023/04/pizzapepperoni.jpg',
       price:250

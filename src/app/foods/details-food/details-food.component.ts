@@ -23,7 +23,7 @@ export class DetailsFoodComponent implements OnInit {
   foodId:number = -1;
   food?:Food = {
     name:'',
-    descripcion:'',
+    description:'',
     image:'',
     category:'',
     price:0
