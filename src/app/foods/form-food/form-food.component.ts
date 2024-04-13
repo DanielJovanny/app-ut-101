@@ -43,7 +43,7 @@ export class FormFoodComponent implements OnInit {
     public router: Router
   ) {}
 
-  fooId: number = -1;
+  foodId: number = -1;
   edit: boolean = false;
   activedRoute: ActivatedRoute = inject(ActivatedRoute);
   food?:Food = {
@@ -57,20 +57,26 @@ export class FormFoodComponent implements OnInit {
   ngOnInit(): void {
     if (this.activedRoute.snapshot.params['id']) {
       this.edit = true;
-      this.fooId = Number(this.activedRoute.snapshot.params['id']);
-      console.log(this.fooId);
-      this.food = this.serviceFood.getOne(this.fooId);
-      if (this.food) {
-        this.form.patchValue({
-          name:this.food.name,
-          category:this.food.category,
-          description:this.food.description,
-          image:this.food.image,
-          price:this.food.price.toString()
-        })
-      }
-      
-      
+      this.foodId = Number(this.activedRoute.snapshot.params['id']);
+      console.log(this.foodId);
+      //this.food = this.serviceFood.getOne(this.fooId);
+      this.serviceFood.getOneFood(this.foodId).subscribe({
+        next:(value)=> this.updateForm(value),
+        error:(e) => console.error(e),
+        complete:()=> console.info('complete'),
+      })
+    }
+  }
+
+  public updateForm(food:Food):void{
+    if (food) {
+      this.form.patchValue({
+        name:food.name,
+        category:food.category,
+        description:food.description,
+        image:food.image,
+        price:food.price.toString()
+      })
     }
   }
 
@@ -85,7 +91,7 @@ export class FormFoodComponent implements OnInit {
       ) {
         let priceNumber = Number(this.price.value);
         let comida: Food = {
-          id:this.fooId,
+          id:this.foodId,
           name: this.name?.value,
           description: this.description?.value,
           category: this.category?.value,
@@ -94,7 +100,12 @@ export class FormFoodComponent implements OnInit {
         };
 
         console.log(comida);
-        this.serviceFood.updateFood(comida);
+        //this.serviceFood.updateFood(comida);
+        this.serviceFood.addFood(comida).subscribe({
+          next:(value)=>(this.food= value),
+          error:(e) => console.error(e),
+          complete:()=> console.info('complete'),
+        })
         this.router.navigate(['/food/food-list']);
       }
     }
@@ -119,7 +130,12 @@ export class FormFoodComponent implements OnInit {
         };
 
         console.log(comida);
-        this.serviceFood.addFood(comida);
+       // this.serviceFood.addFood(comida);
+       this.serviceFood.addFood(comida).subscribe({
+        next:(value)=>(this.food= value),
+        error:(e) => console.error(e),
+        complete:()=> console.info('complete'),
+      })
         this.router.navigate(['/food/food-list']);
       }
     }
