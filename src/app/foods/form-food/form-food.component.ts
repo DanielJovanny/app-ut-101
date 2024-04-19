@@ -104,9 +104,9 @@ export class FormFoodComponent implements OnInit {
         this.serviceFood.addFood(comida).subscribe({
           next:(value)=>(this.food= value),
           error:(e) => console.error(e),
-          complete:()=> console.info('complete'),
+          complete:()=> this.router.navigate(['/food/food-list']),
         })
-        this.router.navigate(['/food/food-list']);
+        
       }
     }
   }
@@ -134,9 +134,8 @@ export class FormFoodComponent implements OnInit {
        this.serviceFood.addFood(comida).subscribe({
         next:(value)=>(this.food= value),
         error:(e) => console.error(e),
-        complete:()=> console.info('complete'),
+        complete:()=> this.router.navigate(['/food/food-list']),
       })
-        this.router.navigate(['/food/food-list']);
       }
     }
   }

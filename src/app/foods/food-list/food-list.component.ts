@@ -8,28 +8,30 @@ import { FoodComponent } from '../food/food.component';
   standalone: true,
   imports: [FoodComponent],
   templateUrl: './food-list.component.html',
-  styleUrl: './food-list.component.scss'
+  styleUrl: './food-list.component.scss',
 })
 export class FoodListComponent implements OnInit {
-
   //Variable
-  data:Food[]= [];
-  constructor(public serviceFood:FoodService){
-          
-  }
-
+  data: Food[] = [];
+  constructor(public serviceFood: FoodService) {}
 
   ngOnInit(): void {
+    this.getAllFoods();
+  }
+
+  public getAllFoods() {
     this.serviceFood.getAll().subscribe({
-      next:(value) => (this.data = value),
-      error:(e) => console.error(e),
-      complete:()=> console.info('complete'),
+      next: (value) => (this.data = value),
+      error: (e) => console.error(e),
+      complete: () => console.info('complete'),
     });
     //this.data = this.serviceFood.getAllFoods();
     console.log(this.data);
-    
   }
 
-
-
+  public ItemDeleted(deleted: boolean) {
+    if (deleted) {
+      this.getAllFoods();
+    }
+  }
 }

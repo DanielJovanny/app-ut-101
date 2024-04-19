@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Food } from '../shared/food.model';
@@ -17,7 +17,7 @@ import { DeleteDialogComponent } from '../../shared/components/delete-dialog/del
 })
 export class FoodComponent {
   @Input() food?: Food;
-
+  @Output() eventDeleteItem = new EventEmitter<boolean>;
   constructor(public foodService:FoodService, public dialog: MatDialog){
 
   }
@@ -42,8 +42,12 @@ export class FoodComponent {
      this.foodService.deleteFood(food).subscribe({
       next:()=> console.log('Se esta eliminando'),
       error:(e)=> console.error(e),
-      complete:()=> console.info('Complete')
+      complete:()=>this.deleteItemEvent(true)
      })
+  }
+
+  public deleteItemEvent(value:boolean){
+    this.eventDeleteItem.emit(value);
   }
 
 
